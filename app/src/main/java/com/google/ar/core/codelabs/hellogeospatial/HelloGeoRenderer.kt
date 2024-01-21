@@ -179,6 +179,14 @@ class HelloGeoRenderer(val activity: HelloGeoActivity) :
     val earth = session.earth
     if (earth?.trackingState == TrackingState.TRACKING) {
       // TODO: the Earth object may be used here.
+      val cameraGeospatialPose = earth.cameraGeospatialPose
+
+      activity.view.mapView?.updateMapPosition(
+        latitude = cameraGeospatialPose.latitude,
+        longitude = cameraGeospatialPose.longitude,
+        heading = cameraGeospatialPose.heading
+      )
+
     }
 
 
